@@ -42,7 +42,7 @@ When you are done annotating the files in your working directory, store your com
 
 If, at this point, you would like to re-use the same working directory with new files, you can save your completed .db file elsewhere, then delete `state.db` and the old images from the `workdir` folder, adding in your new images. Once you launch the app again and select the working directory, a fresh `state.db` file will appear to store your new annotations. Note that you can also create any number of new working directories, so long as each contains the config file and a subdirectory `images/` that contains the directories of images you want to annotate.
 
-## Converting .db files to .csv
+### Converting .db files to .csv
 
 In your terminal, call `db2csv.py` to convert a .db file to a .csv. This script expects up to two arguments:
 
@@ -55,7 +55,9 @@ An example of csv output is given in the file `example-output.csv`.
 
 ## Annotating in ImCo
 
-ImCo is set up for quick annotation and navigation via hotkeys—single keystrokes that enable the annotator to enter data and move between photos.
+ImCo is set up for quick annotation and navigation via hotkeys—single keystrokes that enable the annotator to enter data and move between photos. The photo name and path is shown in the upper left hand corner, together with the current annotation values for that image, with the image shown on the right hand side.
+
+![](example-imco-frame.png)
 
 ### Primary annotation
 
@@ -68,6 +70,16 @@ To navigate through the images use the following keystrokes:
 * Previous image: left arrow
 * Next image: right arrow OR enter
 * Last coded image: cmd + right arrow
+
+### In-app messages
+
+It's easy to lose track of one's place while navigating large image collections, so ImCo provides a number of short messages to alert the annotator to issues that may be helpful along the way.
+
+If you haven't completed all the required annotation types for an image the app will show a pop up message that says "This image isn't fully coded yet.".
+
+If your `workdir/images` directory contains several subdirectories (e.g., multiple image stream recording sessions) then the app will show a pop up meessage to alert you when you're moving between directories with "Hooray! It's a brand new directory.".  If you navigate back from one directory to a previous one it will let you know with "Going back to previous directory.".
+
+If you navigate back to the first image in the directory, the app will let you know with "This is the very first image". Similarly, if you reach the last images, the app will say "You reached the end! You're a coding god!".
 
 ### Customizing annotation types
 
