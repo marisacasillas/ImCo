@@ -6,7 +6,7 @@ ImCo ("IMage COder") is a Python-based application for efficiently annotating im
 
 ## Setup
 
-Launch the application by running `app.py` in the `imco` directory (make sure the file is executable with Python 3 on your machine, e.g., `chmod +x app.py` for OSX with Python 3 installed).
+Launch the application by running `app.py` in the `imco` directory (make sure the file is executable with [Python 3](https://www.python.org/downloads/) on your machine, e.g., `chmod +x app.py` for OSX with Python 3 installed).
 
 When ImCo first runs, you'll need to open a your working directory (File > Open or cmd + o). This directory should contain a configuration .json file and a subdirectory called "images" that itself contains directories of images to code. The ImCo app will save your annotation data in a file called `state.db` that it creates in your working directory.
 
@@ -24,7 +24,7 @@ The structure of the working directory is as follows:
 
 ### Adding your images
 
-This repository contains an example working directory `workdir` that is already set up with the files you need to initiate a new round of annotation, plus some example image subdirectories, `P1-39moM/` and `P1-7moF/`.
+This repository contains an example working directory `workdir` that is already set up with the files you need to initiate a new round of annotation, plus some example image subdirectories, `P1-39moM/` and `P1-7moF/`. By default ImCo expects gifs (for our project we use [ImageMagick](https://imagemagick.org/index.php) to batch convert directories with `gm mogrify -monitor -resize 1000x1000 -format gif recording_session/*.jpg`).
 
 To begin annotating your own images, first ensure that your images are .gifs (see `config.json` to change) that are divided into labeled subdirectories as needed for your project (we use one directory per recording session for each child). Copy those subdirectories into the `images` directory provided here. If there is a `state.db` file and you have not yet begun annotating, delete it.
 
