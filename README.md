@@ -107,4 +107,5 @@ These default annotation types were designed for a specific project and thus may
 ## Attribution
 
 If you use ImCo, please cite one of the following:
-[ADD CITATION]
+
+Casillas, M. & Tice, Shawn C. (2021). ImCo: A Python Tkinter application for coding _lots_ of images [Computer software]. Retrieved from [https://github.com/marisacasillas/ImCo.]()
