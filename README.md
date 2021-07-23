@@ -6,7 +6,9 @@ ImCo ("IMage COder") is a Python-based application for efficiently annotating im
 
 ## Setup
 
-Launch the application by running `app.py` in the `imco` directory. When ImCo first runs, you'll need to open a your working directory (File > Open or cmd + o). This directory should contain a configuration .json file and a subdirectory called "images" that itself contains directories of images to code. The ImCo app will save your annotation data in a file called `state.db` that it creates in your working directory.
+Launch the application by running `app.py` in the `imco` directory (make sure the file is executable with Python 3 on your machine, e.g., `chmod +x app.py` for OSX with Python 3 installed).
+
+When ImCo first runs, you'll need to open a your working directory (File > Open or cmd + o). This directory should contain a configuration .json file and a subdirectory called "images" that itself contains directories of images to code. The ImCo app will save your annotation data in a file called `state.db` that it creates in your working directory.
 
 The structure of the working directory is as follows:
 
