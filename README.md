@@ -6,45 +6,72 @@ ImCo ("IMage COder") is a Python-based application for efficiently annotating im
 
 ## Setup
 
-You can run the application by double-clicking on `app.py` in the `imco` directory. You may first need to make the file executable on your machine with Python 3. When ImCo first runs, you'll need to open a directory that contains a configuration file and images to code, the imco working directory. This is where the application expects to find the images that you want to code, and it's also where it will save its state for those particular images.
+Launch the application by running `app.py` in the `imco` directory. When ImCo first runs, you'll need to open a your working directory (File > Open or cmd + o). This directory should contain a configuration .json file and a subdirectory called "images" that itself contains directories of images to code. The ImCo app will save your annotation data in a file called `state.db` that it creates in your working directory.
 
 The structure of the working directory is as follows:
 
 - `config.json` (sets a number of options for how to code the images)
-- `images` (a directory of directories, each one containing images to code)
-  - `P1-39moM` (a directory of images for one participant)
-  - `P1-7moF` (another participant)
+- `images/` (a directory of directories, each one containing images to code)
+  - `P1-39moM/` (a directory of images for one participant)
+      - `image001.gif` (a .gif to annotate)
+      - `image002.gif` (another .gif)
+      - ...
+  - `P1-7moF/` (another participant)
   - ...
-- `state.db` (auto-generated database containing application state; not present unless you have opened the working directory already)
+- `state.db` (auto-generated database containing application state; **only present after you have opened a working directory**)
 
-This repository contains an example working directory `workdir` that is already set up with the files you need to initiate a new round of annotation. You only need to copy directories of images corresponding to individual participants into the provided `images` directory in that example working directory, and also delete the example participant directories. Once that's done, you can launch the application, select this working directory, and start coding. When you do, it will create the `state.db` file that stores your annotations and your current progress in the working directory. If you make a mistake selecting images or you want to start from a clean slate for some other reason, delete `state.db`, but keep in mind that this action will cause you to lose any coding work you've already done. If you are done annotating the files in your working directory, please see the instructions below on converting your .db file to a .csv for further analysis. If, at this point, you would like to re-use the working directory with new files, you can save your completed .db file elsewhere, then delete `state.db` and the old images from the `workdir` folder, adding in your new images. Once you launch the app again and select the working directory, a fresh `state.db` file will appear to store your new annotations.
+### Adding your images
 
-Please note that the application will save automatically as you annotate images, but we recommend that you periodically export your working database file to a csv file, just in case something goes wrong (see how to do this using the instructions below).
+This repository contains an example working directory `workdir` that is already set up with the files you need to initiate a new round of annotation, plus some example image subdirectories, `P1-39moM/` and `P1-7moF/`.
 
-Please also note that you can add the annotator's name for a work directory in the `config.json` file. The default value is set to "Annotator".
+To begin annotating your own images, first ensure that your images are .gifs (see `config.json` to change) that are divided into labeled subdirectories as needed for your project (we use one directory per recording session for each child). Copy those subdirectories into the `images` directory provided here. If there is a `state.db` file and you have not yet begun annotating, delete it.
+
+If desired, at this point you can also add the annotator's name by editing that field in the `config.json` file. The default value is set to "Annotator".
+
+Now launch the application, select the provided `workdir` working directory, which now contains your images, and start annotating (see below). When you do, it will create a new `state.db` file that stores your annotations and your current progress in the working directory.
+
+If you make a mistake selecting images or you want to start from a clean slate for some other reason, delete `state.db`. However, keep in mind that this action will cause you to lose any coding work you've already done that may be stored in `state.db`.
+
+Please note that the application will save automatically as you annotate images, but we recommend that you periodically export your working database file to a csv file, just in case something goes wrong (see below).
+
+### Saving and exporting annotations
+
+When you are done annotating the files in your working directory, store your completed .db file in a safe place of your choosing and/or convert it to a .csv file for further analysis. You can of course also do so as a form of backup before you have completed your work in that directory.
+
+### Moving between working directories
+
+If, at this point, you would like to re-use the same working directory with new files, you can save your completed .db file elsewhere, then delete `state.db` and the old images from the `workdir` folder, adding in your new images. Once you launch the app again and select the working directory, a fresh `state.db` file will appear to store your new annotations. Note that you can also create any number of new working directories, so long as each contains the config file and a subdirectory `images/` that contains the directories of images you want to annotate.
 
 ## Converting .db files to .csv
 
-First, ensure that you make `convert-dbs.sh` executable on your machine. 
- ...
+In your terminal, call `db2csv.py` to convert a .db file to a .csv. This script expects up to two arguments:
 
-## Navigation
+* the path to the working directory where your `state.db` file is stored (required)
+* a flag `-o` followed by a name for your output file (optional)
+
+For example, if you only use the example directory we have set up, you might call `./db2csv.py workdir` to create a file called `state.csv` in the top-level ImCo directory. Alternatively you might call `./db2csv.py workdir -o workdir/annotator1-20210723.csv` to create a file called `annotator1-20210723.csv` in the `workdir/` directory. How you name and place your files is up to you, just be careful not to overwrite your annotations!
+
+## Annotating in ImCo
 
 ImCo is set up for quick annotation and navigation via hotkeys—single keystrokes that enable the annotator to enter data and move between photos.
 
+### Primary annotation
+
 For each annotation category, there should be a unique initial keystroke value (e.g., "A" to enter the number of visible adults) which can then optionally lead to a more refined annotation value (e.g., the numbers 0-9; see below for examples via the default annotation types).
+
+### Navigation
 
 To navigate through the images use the following keystrokes:
 
 * Previous image: left arrow
 * Next image: right arrow OR enter
-* Last coded image: ctrl + right arrow
+* Last coded image: cmd + right arrow
 
-## Customizing annotation types
+### Customizing annotation types
 
-You may customize the annotation types accepted by ImCo by editing the `config.json` file. Note that your initial keystroke values must be unique across your annotation categories (e.g., we can't use 'c' for both 'Kids/Children' and 'Crying' in the example below). Within annotation categories, value keystroke options must also be unique (e.g., we can't use 'o' for both 'Dark/Obscured' and 'Other' in the Unusable annotation category).
+You may customize the annotation types accepted by ImCo by editing the `config.json` file. Note that your initial keystroke values must be unique across your annotation categories (e.g., we can't use 'c' for both 'Kids/Children' and 'Crying' in the example below). Within annotation categories, the value keystroke options must also be unique (e.g., we can't use 'o' for both 'Dark/Obscured' and 'Other' in the Unusable annotation category).
 
-## Default annotation types
+### Default annotation types
 
 The default annotation categories are set to be used as follows:
 
@@ -59,7 +86,7 @@ The default annotation categories are set to be used as follows:
 | Unusable | u | D, C, O |  Set to no by default. Otherwise: D = the photo is too dark or too light to see anything. C = the camera cover is on. O = other cases, including the photos at the beginning and the end when the researchers are still present. **NOTE: If you mark a photo as unusable, you do not have to fill in any of the other codes.** |
 | Skipped | s | N/A | Set to no by default. Use if you would like to skip this photo, leaving all the other code fields blank. |
 
-These annotation types were designed for an ongoing project. The repository for that project, including original instructions is available here [repository: ADD-LINK; original [annotation table](https://docs.google.com/document/d/1aQlpB9N8LVAfzuac_XqZzhWiKQ6AptsDzHxLDKrJAOA/edit?usp=sharing) and [training tips](https://docs.google.com/document/d/1pbTZkqBBTE_aFawVr5daiIKrKVc1kdvi8lX65cwpn3A/edit?usp=sharing)]. We encourage you to adapt these annotations as needed for your project, though we note that re-use of categories where relevant increases comparability across studies.
+These default annotation types were designed for a specific project and thus may not be suitable for your goals. The repository for that project, including original instructions is available here [repository: ADD-LINK; original [annotation table](https://docs.google.com/document/d/1aQlpB9N8LVAfzuac_XqZzhWiKQ6AptsDzHxLDKrJAOA/edit?usp=sharing) and [training tips](https://docs.google.com/document/d/1pbTZkqBBTE_aFawVr5daiIKrKVc1kdvi8lX65cwpn3A/edit?usp=sharing)]. We encourage you to adapt these annotations as needed for your project, though we note that re-use of categories where relevant increases comparability across studies.
 
 ## Attribution
 
