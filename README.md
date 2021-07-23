@@ -51,6 +51,8 @@ In your terminal, call `db2csv.py` to convert a .db file to a .csv. This script 
 
 For example, if you only use the example directory we have set up, you might call `./db2csv.py workdir` to create a file called `state.csv` in the top-level ImCo directory. Alternatively you might call `./db2csv.py workdir -o workdir/annotator1-20210723.csv` to create a file called `annotator1-20210723.csv` in the `workdir/` directory. How you name and place your files is up to you, just be careful not to overwrite your annotations!
 
+An example of csv output is given in the file `example-output.csv`.
+
 ## Annotating in ImCo
 
 ImCo is set up for quick annotation and navigation via hotkeys—single keystrokes that enable the annotator to enter data and move between photos.
