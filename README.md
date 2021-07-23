@@ -2,7 +2,7 @@
 
 A Python Tkinter application for coding _lots_ of images.
 
-ImCo ("IMage COder") is a Python-based application for efficiently annotating image directories with pre-defined, categorical values. The app as provided is set up for annotating child-centric daylong photo streams but the input values can of course be edited to your custom needs.
+ImCo ("IMage COder") is a Python-based application for efficiently annotating image directories with pre-defined, categorical values. The app as provided is set up for annotating child-centric daylong image streams but the input values can of course be edited to your custom needs.
 
 ## Setup
 
@@ -57,7 +57,7 @@ An example of csv output is given in the file `example-output.csv`.
 
 ## Annotating in ImCo
 
-ImCo is set up for quick annotation and navigation via hotkeys—single keystrokes that enable the annotator to enter data and move between photos. The photo name and path is shown in the upper left hand corner, together with the current annotation values for that image, with the image shown on the right hand side.
+ImCo is set up for quick annotation and navigation via hotkeys—single keystrokes that enable the annotator to enter data and move between images. The image name and path is shown in the upper left hand corner, together with the current annotation values for that image, with the image shown on the right hand side.
 
 ![](example-imco-frame.png)
 
@@ -93,14 +93,14 @@ The default annotation categories are set to be used as follows:
 
 | Annotation category | Initial keystroke | Value keystroke options | Value meaning |
 |---|---|---|---|
-| Adults | a | 0–9 | The number of people who look to be of child-bearing age or older in the photo, not including the person wearing the camera. More than 9 can be marked with “9”. | 
-| Kids | k | 0–9 | The number of people who look to be below child-bearing age in the photo, not including the person wearing the camera. More than 9 can be marked with “9”. |
+| Adults | a | 0–9 | The number of people who look to be of child-bearing age or older in the image, not including the person wearing the camera. More than 9 can be marked with “9”. | 
+| Kids | k | 0–9 | The number of people who look to be below child-bearing age in the image, not including the person wearing the camera. More than 9 can be marked with “9”. |
 | Hands | h | C, I, B, N | **C = the target child** is holding/handling something or appears to be mid-activity with a held object/person. **I = one or more of the child’s interactants** is holding/handling something in a way immediately relevant to the target child (e.g., handing them something, cleaning their face). **B = both the target child and one or more of their interactants** are holding/handling something, as defined above. **N = there is no holding/handling behavior.** |
-| Crying | c | N/A | Set to no by default. Use of this flag by the annotator indicates that any child in the photo is crying. |
-| Breastfeeding | b | N/A | Set to no by default. Use of this flag by the annotator indicates that any child in the photo is being breastfed. |
-| Flagged | f | N/A | Set to no by default. Use of this flag by the annotator indicates that the photo is interesting for some reason and we should come back to it later; please make a separate note with the participant and photo number for photos with specific comments. | 
-| Unusable | u | D, C, O |  Set to no by default. Otherwise: D = the photo is too dark or too light to see anything. C = the camera cover is on. O = other cases, including the photos at the beginning and the end when the researchers are still present. **NOTE: If you mark a photo as unusable, you do not have to fill in any of the other codes.** |
-| Skipped | s | N/A | Set to no by default. Use if you would like to skip this photo, leaving all the other code fields blank. |
+| Crying | c | N/A | Set to no by default. Use of this flag by the annotator indicates that any child in the image is crying. |
+| Breastfeeding | b | N/A | Set to no by default. Use of this flag by the annotator indicates that any child in the image is being breastfed. |
+| Flagged | f | N/A | Set to no by default. Use of this flag by the annotator indicates that the image is interesting for some reason and we should come back to it later; please make a separate note with the participant and image number for images with specific comments. | 
+| Unusable | u | D, C, O |  Set to no by default. Otherwise: D = the image is too dark or too light to see anything. C = the camera cover is on. O = other cases, including the images at the beginning and the end when the researchers are still present. **NOTE: If you mark a image as unusable, you do not have to fill in any of the other codes.** |
+| Skipped | s | N/A | Set to no by default. Use if you would like to skip this image, leaving all the other code fields blank. |
 
 These default annotation types were designed for a specific project and thus may not be suitable for your goals. The repository for that project, including original instructions is available here [repository: ADD-LINK; original [annotation table](https://docs.google.com/document/d/1aQlpB9N8LVAfzuac_XqZzhWiKQ6AptsDzHxLDKrJAOA/edit?usp=sharing) and [training tips](https://docs.google.com/document/d/1pbTZkqBBTE_aFawVr5daiIKrKVc1kdvi8lX65cwpn3A/edit?usp=sharing)]. We encourage you to adapt these annotations as needed for your project, though we note that re-use of categories where relevant increases comparability across studies.
 
