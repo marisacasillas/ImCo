@@ -28,8 +28,6 @@ This repository contains an example working directory `workdir` that is already 
 
 To begin annotating your own images, first ensure that your images are .gifs (see `config.json` to change) that are divided into labeled subdirectories as needed for your project (we use one directory per recording session for each child). Copy those subdirectories into the `images` directory provided here. If there is a `state.db` file and you have not yet begun annotating, delete it.
 
-If desired, at this point you can also add the annotator's name by editing that field in the `config.json` file. The default value is set to "Annotator".
-
 Now launch the application, select the provided `workdir` working directory, which now contains your images, and start annotating (see below). When you do, it will create a new `state.db` file that stores your annotations and your current progress in the working directory.
 
 If you make a mistake selecting images or you want to start from a clean slate for some other reason, delete `state.db`. However, keep in mind that this action will cause you to lose any coding work you've already done that may be stored in `state.db`.
@@ -46,12 +44,13 @@ If, at this point, you would like to re-use the same working directory with new 
 
 ### Converting .db files to .csv
 
-In your terminal, call `db2csv.py` to convert a .db file to a .csv. This script expects up to two arguments:
+In your terminal, call `db2csv.py` to convert a .db file to a .csv. This script expects up to three arguments:
 
 * the path to the working directory where your `state.db` file is stored (required)
+* the name of the annotator associated with this file
 * a flag `-o` followed by a name for your output file (optional)
 
-For example, if you only use the example directory we have set up, you might call `./db2csv.py workdir` to create a file called `state.csv` in the top-level ImCo directory. Alternatively you might call `./db2csv.py workdir -o workdir/annotator1-20210723.csv` to create a file called `annotator1-20210723.csv` in the `workdir/` directory. How you name and place your files is up to you, just be careful not to overwrite your annotations!
+For example, if you only use the example directory we have set up, you might call `./db2csv.py workdir/state.db Annotator` to create a file called `state.csv` in the top-level ImCo directory. Alternatively you might call `./db2csv.py workdir/state.db Annotator -o workdir/annotator1-20210817.csv` to create a file called `annotator1-20210817.csv` in the `workdir/` directory. How you name and place your files is up to you, just be careful not to overwrite your annotations!
 
 An example of csv output is given in the file `example-output.csv`.
 
